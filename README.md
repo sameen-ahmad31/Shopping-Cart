@@ -6,6 +6,7 @@ I have developed a shopping cart project for a coffee shop based in Madrid, Spai
 Users can log in or sign up.
 During sign up, if a chosen username already exists in the database, the user is notified and can choose to proceed to the home page or retry the sign-up process.
 Upon incorrect login credentials, the user is notified and given the option to try logging in again or sign up.
+<br>
 2. Product Search and Description:
 
 Users can search for items on the website.
