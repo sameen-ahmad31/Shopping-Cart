@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <title>Order History</title>
+    <link href="/static/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <center>
+        <h1 class = "sameen">Your Order History</h1>
+    </center>
+     {% if orderhist|length > 0: %}
+   <div class="buttons">
+    <form action = "/searchinOrders" method = "POST"> 
+    <input type="text" placeholder="Search in the Orders..." name= "searchresult">
+    <button type="submit">Search</button>
+    </form>
+  </div>
+       {% endif %}
+    
+    <ul>
+      {% if orderhist|length > 0: %}
+        {% for o in orderhist: %}
+       <p> 
+        <li> Date of Order: {{o['dateOfOrd'] }} 
+         <br> Product: {{o['product_name']}} 
+         <br> Quantity: {{o['quantity']}} 
+          <br>
+        </li>
+       </p>
+      {% endfor %}
+      {% else %}
+      <center>
+      <h1 class = "sameen"> No Order History Available! </h1>
+      </center>
+      {% endif %}
+      
+  </ul>
+
+   {% if orderhist|length > 0: %}
+ 
+     <form action="/sortorder" method = "POST">
+    <label for="dates">Sort Orders By Date:</label>
+    <select name="dates" id="dates">
+    <option value="asc">Ascending Order </option>
+    <option value="desc">Descending Order</option>
+    </select>
+    <br>
+<button type="submit">Submit</button>
+</form>
+    
+     {% else %}
+      You can not search nor sort in your Order History since you have no Order History Available. 
+      {% endif %}
+
+    
+     <div class="buttons">
+    <form action = "/"> 
+    <button type="submit">Return to Home Page</button>
+    </form>
+
+       
+    <form action = "/logout"> 
+    <button type="submit">Log Out</button>
+    </form>
+       
+    </div>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <title>Home</title>
+    <link href="/static/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <center>
+    <h1 class = "sameen"> Bienvenidos al Café de España</h1>
+      <img src="static/madrid.png" alt="Italian" width="500" 
+     height="400">
+    </center>
+    
+    <div class="buttons">
+    <form action = "/userlogin" method = "GET"> 
+    <button type="submit">Log In</button>
+    </form>
+      
+       <form action = "/signup" method = "GET"> 
+    <button type="submit">Sign Up</button>
+    </form>
+       </div>
+    
+     <div class="buttons">
+      <form action = "/search" method = "POST"> 
+        <input type="text" placeholder="Search Bar.." name= "searchresult">
+    <button type="submit">Search</button>
+      </form>
+    </div>
+    
+    <h2>Products:</h2>
+
+     <div id="grid">
+  {% for p in data: %}
+    <div class="product">
+     
+       <a href="/prod/{{p['id']}}" class="link"> <h2>{{ p['name'] }}</h2> </a>
+          <img src= "{{ p['pic'] }}" alt="Italian" width="250" 
+     height="200">
+      
+      {% if p['stock'] == 0 %}
+        <p>Out of Stock</p>
+        <p>Price: ${{ p['price'] }}</p>
+      {% else %}
+        <p>Stock: {{ p['stock'] }}</p>
+        <p>Price: ${{ p['price'] }}</p>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+    
+    
+    <h2>Categories</h2>
+      <div class="buttons">
+        
+        <form action = "/coffeebeans"  method = "GET"> 
+       <button type="submit">Coffee Beans</button>
+        </form>
+        
+         <form action = "/groundcoffee"  method = "GET" > 
+       <button type="submit">Ground Coffee</button>
+         </form>
+        
+         <form action = "/miscellaneous"  method = "GET"> 
+       <button type="submit">Miscellaneous</button>
+         </form>
+        
+      </div>
+    
+    
+    </body>
+</html>

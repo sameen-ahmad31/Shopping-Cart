@@ -1,0 +1,58 @@
+<html>
+  <head>
+     <link href="/static/style.css" rel="stylesheet" type="text/css" />
+    <title>Product Description</title>
+ 
+  </head>
+  <body>
+ <center>
+
+
+   <h1 class = "sameen"> {{ proddata['name'] }}'s Description </h1>
+  
+   
+</center>
+
+    <div id="wrap">
+    
+    <div class="product">
+    </div>
+       
+    <div class="product">
+      <h2>{{ proddata['name'] }}</h2>
+      
+      <img src= "../{{proddata['pic']}}" alt="Italian" width="250" 
+     height="200">
+      
+      {% if proddata['stock'] == 0 %}
+        <p>Out of Stock!</p>
+        <p>Price: ${{ proddata['price'] }}</p>
+       <p>{{ proddata['description'] }}</p>
+      {% else %}
+        <p>Stock: {{ proddata['stock'] }}</p>
+        <p>Price: ${{ proddata['price'] }}</p>
+       <p>{{ proddata['description'] }}</p>
+      {% endif %}
+      
+       {% if 'name' in session: %}
+            {% if proddata["stock"] > 0: %}
+       <form action = "/cart" method = "POST"> 
+       <input type = "hidden" name = "id" value = "{{proddata['id']}}">
+       <input type="number" min="1" name= "quant" >
+      <button type="submit">Add to Cart</button>
+      </form>
+      {% endif %}
+      {% endif %}
+        
+    </div>
+</div>
+
+     
+
+  <form action = "/"> 
+    <button type="submit">Home Page</button>
+    </form>
+
+      </body>
+</html>
+    

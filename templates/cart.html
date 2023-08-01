@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>Cart</title>
+    <link href="/static/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <center>
+        <h1 class = "sameen"> Cart</h1>
+    </center>
+      <ul>
+      {% for c in session['cart']: %}
+       <p> 
+        <li> {{c[2]}} 
+         <br> Quantity: {{c[1]}} 
+         <br> Price of Each Item: ${{c[3]}} 
+          <br>
+          <div class="buttons">
+          <form action = "/cart" method = "POST"> 
+          <input type = "hidden" name = "quant" value = 1>
+          <input type = "hidden" name = "id" value = "{{c[0]}}">
+          <button type="submit">+</button>
+          </form>
+          <form action = "/cart" method = "POST"> 
+          <input type = "hidden" name = "quant" value = -1>
+          <input type = "hidden" name = "id" value = "{{c[0]}}">
+          <button type="submit">-</button>
+          </form>
+            
+          </div>
+        </li>
+       </p>
+    {% endfor %}
+  </ul>
+
+      <div class="buttons">
+      {% if 'cart' in session and session['cart']|length > 0: %}
+    <form action = "/clearcart"> 
+    <button type="submit">Clear the Cart</button>
+    </form>
+    <form action = "/checkout"> 
+    <button type="submit">Checkout</button>
+    </form>
+      {% else %}
+      <center>
+      <h1 class = "sameen"> Your shopping cart is empty! </h1>
+      </center>
+      {% endif %}
+    </div>
+    
+     <div class="buttons">
+      <form action = "/"> 
+    <button type="submit">Home Page</button>
+    </form>
+    </div>
+    
+  </body>
+</html>

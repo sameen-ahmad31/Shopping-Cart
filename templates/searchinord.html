@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>Search</title>
+    <link href="/static/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <center>
+        <h1 class = "sameen"> User the Search Bar to Search for an Item in Your Order History</h1>
+    </center>
+      <form action="/searchinOrders" method = "POST">
+        Search: 
+      <input type="text" name= "searchresult" ><br>
+  <button type="submit">Submit</button>
+ </form>
+
+      <form action = "/orderhistory"> 
+    <button type="submit">Return to Order History</button>
+    </form>
+    
+  </body>
+</html>

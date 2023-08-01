@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title>Search Results</title>
+    <link href="/static/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <center>
+        <h1 class = "sameen"> Search Results</h1>
+    </center>
+
+     <h3>Relevant Items in Your Order History:</h3>
+    {% if searchresults: %}
+        <div id="grid">
+   {% for item in searchresults: %}
+    <div class="product">
+     
+      <h2>{{ item['product_name'] }}</h2>
+        <p>Quantity: {{ item['quantity'] }}</p>
+        <p>Date of Order: {{ item['dateOfOrd'] }}</p>
+     
+
+        {% if 'name' in session: %}
+           {% for product in productresults: %}
+             {% if product['id'] == item['product_id']: %}
+                {% if product['stock'] > 0: %}
+      
+          <form action = "/cart" method = "POST"> 
+          <input type = "hidden" name = "id" value = "{{item['product_id']}}">
+          <input type="number" min="1" name= "quant" >
+          <button type="submit">Add to Cart</button>
+          </form>
+      {% else %}
+       Out of Stock!
+       {% endif %}
+          {% endif %}
+       {% endfor %}
+    
+       {% endif %}
+    </div>
+  {% endfor %}
+</div>
+    {% else %}
+  <p>No search results found in the order history</p>
+{% endif %}
+    
+
+    <div class="buttons">
+    <form action="/searchinOrders" method = "GET">
+    <button type="submit">Search Again in the Order History</button>
+    </form>
+
+   
+    <form action = "/orderhistory"> 
+    <button type="submit">Return to Order History</button>
+    </form>
+      
+    </div>
+
+  </body>
+</html>

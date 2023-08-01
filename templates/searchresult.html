@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <title>Search Results</title>
+    <link href="/static/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <center>
+        <h1 class = "sameen"> Search Results</h1>
+    </center>
+
+     <h3>Relevant Items:</h3>
+    {% if searchresults: %}
+    
+        <div id="grid">
+   {% for item in searchresults: %}
+    <div class="product">
+     
+      <h2>{{ item['name'] }}</h2>
+           <img src= "{{ item['pic'] }}" alt="Italian" width="250" 
+     height="200">
+      
+      {% if item['stock'] == 0 %}
+        <p>Out of Stock!</p>
+        <p>Price: ${{ item['price'] }}</p>
+      {% else %}
+        <p>Stock: {{ item['stock'] }}</p>
+        <p>Price: ${{ item['price'] }}</p>
+      {% endif %}
+
+        {% if 'name' in session: %}
+            {% if item["stock"] > 0: %}
+          <form action = "/cart" method = "POST"> 
+          <input type = "hidden" name = "id" value = "{{item['id']}}">
+          <input type="number" min="1" name= "quant" >
+          <button type="submit">Add to Cart</button>
+          </form>
+       {% endif %}
+       {% endif %}
+    </div>
+  {% endfor %}
+</div>
+    {% else %}
+  <p>No search results found.</p>
+{% endif %}
+    
+
+    <div class="buttons">
+    <form action="/search" method = "GET">
+    <button type="submit">Search Again</button>
+    </form>
+
+    <form action="/">
+    <button type="submit">Home Page</button>
+    </form>
+    </div>
+
+  </body>
+</html>

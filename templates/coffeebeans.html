@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>Coffee Beans</title>
+    <link href="/static/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <center>
+    <h1 class = "sameen"> Coffee Beans</h1>
+    </center>
+
+       <div id="grid">
+   {% for cb in coffbeans: %}
+    <div class="product">
+     
+           <a href="/prod/{{cb['id']}}" class="link"> <h2>{{ cb['name'] }}</h2> </a>
+        <img src= "{{ cb['pic'] }}" alt="Italian" width="250" 
+     height="200">
+      
+      {% if cb['stock'] == 0 %}
+        <p>Out of Stock!</p>
+        <p>Price: ${{ cb['price'] }}</p>
+      {% else %}
+        <p>Stock: {{ cb['stock'] }}</p>
+        <p>Price: ${{ cb['price'] }}</p>
+      {% endif %}
+      
+       {% if 'name' in session: %}
+            {% if cb["stock"] > 0: %}
+          <form action = "/cart" method = "POST"> 
+          <input type = "hidden" name = "id" value = "{{cb['id']}}">
+          <input type="number" min="1" name= "quant" >
+          <button type="submit">Add to Cart</button>
+          </form>
+       {% endif %}
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+    
+
+      <form action = "/coffeebeans"  method = "POST"> 
+    <button type="submit">Home Page</button>
+    </form>
+
+
+  </body>
+</html>
+    

@@ -1,0 +1,70 @@
+in the home.html
+<ul>
+      {% for p in data: %}
+        <p> 
+        <li>{{p["name"]}} 
+          <br>Stock: {{p["stock"]}} 
+          <br>Price: {{p["price"]}} 
+          <br>
+           {% if p["stock"] == 0: %}
+              Out of Stock!
+           {% endif %}
+        </li>
+       </p>
+  {% endfor %}
+  </ul>
+
+
+
+  in the User.html 
+       <ul>
+      {% for p in data: %}
+       <p> 
+        <li>{{p["name"]}} 
+          <br>Stock: {{p["stock"]}} 
+          <br>Price: ${{p["price"]}} 
+          <br>
+          {% if p["stock"] > 0: %}
+             <form action = "/cart" method = "POST"> 
+              <input type = "hidden" name = "id" value = "{{p['id']}}">
+            <input type="number" min="1" name= "quant" >
+          <button type="submit">Add to Cart</button>
+          </form>
+           {% else %}
+             Out of Stock!
+           {% endif %}
+        </li>
+       </p>
+  {% endfor %}
+  </ul>
+
+
+
+  in the cofee
+
+       <ul>
+      {% for cb in coffbeans: %}
+          <p> 
+        <li>{{cb["name"]}} 
+          <br>Stock: {{cb["stock"]}} 
+          <br>Price: ${{cb["price"]}} 
+          <br>
+          
+          {% if 'name' in session: %}
+            {% if cb["stock"] > 0: %}
+          <form action = "/cart" method = "POST"> 
+          <input type = "hidden" name = "id" value = "{{cb['id']}}">
+          <input type="number" min="1" name= "quant" >
+          <button type="submit">Add to Cart</button>
+          </form>
+            {% else %}
+             Out of Stock!
+           {% endif %}
+          {% elif cb["stock"] == 0: %}
+            Out of Stock!
+          {% endif %}
+        </li>
+            
+       </p>
+  {% endfor %}
+  </ul>

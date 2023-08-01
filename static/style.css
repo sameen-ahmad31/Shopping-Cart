@@ -1,0 +1,134 @@
+.sameen
+{
+  background-image: linear-gradient(
+    -225deg,
+    #e7ca08 0%,
+    #a41e92 29%,
+    #f6c309 67%,
+    #c1bb15 100%
+  );
+  background-clip: border-box;
+  background-size: 250% auto;
+  color: #c9bbbb;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textanimation 1.5s linear infinite;
+  animation-direction: alternate-reverse;
+
+}   
+
+
+h1 {
+  animation-name: bckground;
+  animation-duration: 9s;
+  animation-iteration-count: infinite;
+  font-family: Lucida Handwriting, Cursive;
+}
+
+@keyframes textanimation {
+  to {
+    background-color:  #871003;
+    background-position: 150% center;
+  }
+}
+
+@keyframes bckground {
+  background-color:  #871003;
+}
+
+body {
+  background-color: #871003;
+  color: #f6c309;
+  font-family:Lucida Handwriting, Cursive;
+}
+
+p {
+  color: #f6c309;
+  font-family: Papyrus, Copperplate, Fantasy;
+}
+li {
+    color: #f6c309;
+    font-family: Papyrus, Copperplate, Fantasy;
+}
+
+button {
+  background-color: #f6c309;
+  color: #871003;
+  padding: 5px 5px;
+  font-family:Lucida Handwriting, Cursive;
+}
+
+.buttons {
+  display: flex;
+}
+
+.buttons button {
+  width: 87px;
+  height: 50px;
+  margin-right: 10px;
+  cursor: pointer;
+  border: 2px solid #f6c309;
+}
+
+
+.buttons input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 15px;
+  background-color: #f6c309;
+  color: #871003;
+  font-family:Lucida Handwriting, Cursive;
+  cursor: pointer;
+  border: 2px solid #f6c309;
+}
+
+button[type="submit"] {
+    cursor: pointer;
+  border: 2px solid #f6c309;
+  
+}
+
+input::placeholder {
+    color: #871003;
+    font-family:Lucida Handwriting, Cursive;
+     
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(auto, 1fr);
+  grid-gap: 20px;
+}
+.product {
+  border: 1px #f6c309;
+  padding: 20px;
+  text-align: center;
+}
+.product h2 {
+  margin-top: 0;
+}
+.product p {
+  margin-bottom: 5px;
+}
+
+#wrap {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: (1, 1fr);
+  grid-gap: 20px;
+}
+
+
+.link {
+    color: #f6c309;
+  }
+
+
+select {
+  background-color: #f6c309;
+  color: #871003;
+  font-family:Lucida Handwriting, Cursive;
+}

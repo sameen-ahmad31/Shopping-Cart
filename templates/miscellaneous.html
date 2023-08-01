@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>Miscellaneous</title>
+    <link href="/static/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <center>
+    <h1 class = "sameen"> Miscellaneous </h1>
+    </center>
+
+    <div id="grid">
+   {% for m in misllc: %}
+    <div class="product">
+     
+        <a href="/prod/{{m['id']}}" class="link"> <h2>{{ m['name'] }}</h2> </a>
+        <img src= "{{ m['pic'] }}" alt="Italian" width="250" 
+     height="200">
+      
+      {% if m['stock'] == 0 %}
+        <p>Out of Stock!</p>
+        <p>Price: ${{ m['price'] }}</p>
+      {% else %}
+        <p>Stock: {{ m['stock'] }}</p>
+        <p>Price: ${{ m['price'] }}</p>
+      {% endif %}
+      
+       {% if 'name' in session: %}
+              {% if m["stock"] > 0: %}
+              <form action = "/cart" method = "POST"> 
+              <input type = "hidden" name = "id" value = "{{m['id']}}">
+                 <input type="number" min="1" name= "quant" >
+              <button type="submit">Add to Cart</button>
+              </form>
+       {% endif %}
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+    
+
+    <form action = "/miscellaneous"  method = "POST"> 
+    <button type="submit">Home Page</button>
+    </form>
+
+  </body>
+</html>
