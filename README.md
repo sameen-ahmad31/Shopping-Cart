@@ -1,4 +1,4 @@
-# Shopping Cart
+## Shopping Cart Project - Coffee Shop in Madrid, Spain
 I have developed a shopping cart project for a coffee shop based in Madrid, Spain, using SQL, Python, and Flask. The website allows users to interact with various features, and here's a summary of its functionalities:
 <br>
 1. User Authentication:
