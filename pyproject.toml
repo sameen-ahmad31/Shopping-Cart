@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "repl_python3_HW-Shopping-Cart"
+name = "Sameen-Shopping-Cart"
 version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+description = "Sameen's Shopping Cart"
+authors = ["Sameen Ahmad <sameen5634@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
